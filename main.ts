@@ -1,13 +1,20 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-// one-sentence entry for make.fun's "The Long Roast: Lawmakers and the File They Cannot Convert" bounty: lawmakers who write laws for superintelligent AI, undercut by a file nobody can convert.
-// Pass 2: split at the turn — authority set up, then undercut by the empty building; punch stays on the last words.
+// One-sentence entry for make.fun's "The Long Roast: Lawmakers
+// and the File They Cannot Convert" bounty. The program writes a
+// single sentence to /output/entry.txt (or $OUTPUT_DIR/entry.txt):
+// the lawmakers who write laws for superintelligent AI, undercut
+// by the one file nobody in the building can convert. Pass 2:
+// the sentence is split at its turn — authority set up first,
+// then undercut by the empty building — so the punch stays on
+// the last words, where the judge brief wants it.
+// buildEntryText() is the single source of truth for the exact text;
+// nothing below duplicates the sentence.
 const ENTRY_BEATS = [
   "The men and women writing laws to govern superintelligent AI adjourned their hearing twenty minutes early today,",
   "because the only person in the building who can convert a Word file to PDF had already gone home.",
 ] as const;
-
 
 export function buildEntryText(): string {
   return ENTRY_BEATS.join(" ");
